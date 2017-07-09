@@ -1,0 +1,13 @@
+name: layout
+version: 0.1.0
+
+authors:
+  - Max Lahey <maxwellslahey@gmail.com>
+
+targets:
+  layout:
+    main: src/layout.cr
+
+crystal: 0.23.0
+
+license: MIT
