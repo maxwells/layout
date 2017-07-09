@@ -1,16 +1,32 @@
 module Layout
   module DOM
-    class Node
+    abstract class Node
       @kind : String
       @children : Array(Node)
-      @attributes : Hash(String, String)
 
-      getter :kind, :children, :attributes
+      getter :kind, :children
 
-      def initialize(@kind)
-        @attributes = {} of String => String
+      def initialize(@kind : String, @children : Array(Node))
+      end
+    end
+
+    class TextNode < Node
+      getter :data
+
+      def initialize(@data : String)
+        @kind = "text"
         @children = [] of Node
       end
+
+      def to_html : String
+        data
+      end
+    end
+
+    class ElementNode < Node
+      @attributes : Hash(String, String)
+
+      getter :attributes
 
       def initialize(@kind, @attributes, @children = [] of Node)
       end
